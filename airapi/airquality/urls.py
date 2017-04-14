@@ -4,7 +4,6 @@ from rest_framework.routers import DefaultRouter
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
-router.register(r'persons', views.PersonViewSet)
 router.register(r'rules', views.RuleViewSet)
 router.register(r'users', views.UserViewSet)
 router.register(r'records', views.RecordViewSet)

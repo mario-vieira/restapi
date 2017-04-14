@@ -6,20 +6,10 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Person(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name',)
-
 class Rule(models.Model):
     parameter = models.CharField(max_length=30)
     threshold = models.IntegerField(default=0)
-    owners = models.ManyToManyField(Person)
+    owners = models.ManyToManyField(User)
 
     class Meta:
         ordering = ('parameter',)
@@ -29,7 +19,7 @@ class Alert(models.Model):
     parameter =  models.CharField(max_length=30)
     value = models.IntegerField(default=0);
     threshold = models.IntegerField(default=0)
-    owners =  models.ManyToManyField(Person)
+    owners =  models.ManyToManyField(User)
 
     class Meta:
         ordering = ('received',)

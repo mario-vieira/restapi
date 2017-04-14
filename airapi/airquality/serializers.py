@@ -1,17 +1,20 @@
 from rest_framework import serializers
-from airquality.models import Rule, Record, Alert, Person
+from airquality.models import Rule, Record, Alert
 from django.contrib.auth.models import User
 
-class PersonSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Person
-        fields = ('url', 'name', 'email')
-
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    #owner = serializers.CharField(read_only=True, source='owner.username')
+    
     class Meta:
         model = User
         fields = ('url', 'username', 'email', 'groups')
 
+class UsernameSerializer(serializers.HyperlinkedModelSerializer):
+    #owner = serializers.CharField(read_only=True, source='owner.username')
+    
+    class Meta:
+        model = User
+        fields = ('username',)
 
 class RuleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -24,6 +27,8 @@ class RecordSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'received','parameter','value')
 
 class AlertSerializer(serializers.HyperlinkedModelSerializer):
+    #owners = serializers.ReadOnlyField(source='owners.username')
+    owners = UserSerializer(many=True)
     class Meta:
         model = Alert
         fields = ('url', 'received','parameter','value', 'threshold', 'owners')
