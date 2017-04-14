@@ -3,7 +3,6 @@ from airquality.models import Rule, Record, Alert
 from django.contrib.auth.models import User
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    #owner = serializers.CharField(read_only=True, source='owner.username')
     
     class Meta:
         model = User

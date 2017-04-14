@@ -43,7 +43,15 @@ If you want to create more users you should run the following command in the mai
 python manage.py createsuperuser
 ``` 
 
-You can create, edit or delete rules but only to create records in order to simulate some sensor readings. The alerts are automatically generated, so it is not possible to take any action on this data besides read.
+You can create, edit or delete rules but only to create records in order to simulate some sensor readings. The alerts are automatically generated, so it is not possible to take any action on this data besides read it.
+
+The main endpoints are:
+
+* **rules:** http://localhost:8000/rules/
+* **users:** http://localhost:8000/users/
+* **records:** http://localhost:8000/records/
+* **alerts:** http://localhost:8000/alerts/
+
 To list the alerts by user you should type `http://localhost:8000/alerts/?owners=user_id`
 
 ## Authors
