@@ -1,10 +1,10 @@
 # Air Quality REST API
 
-This REST API intends to monitor the air quality, namely detecting peaks of carbon monoxide. The API allows to create rules with the environmental parameter to be monitored, the dangerous threshold and a list of users that are notified. 
-The API accepts measurements from sensors with the envrironmental parameter being monitored, the measured value and the timestamp and generates an alert if the measured value exceeds some threshold defined in the rules.
+This REST API intends to monitor the air quality, namely detecting peaks of carbon monoxide. The API allows to create rules with the environmental parameter to be monitored, its threshold and a list of users to be notified. 
+The API accepts measurements from sensors with the environmental parameter being monitored, the measured value and the timestamp and generates an alert if the measured value exceeds some threshold defined in the rules.
 Finally, it is possible to check, for each user, the alerts registered with the timestamp, the environmental parameter monitored, the measured value and the threshold. 
 
-These API was developed and tested running Ubuntu 16.04.
+This API was developed and tested running Ubuntu 16.04.
 
 ### Prerequisites
 
