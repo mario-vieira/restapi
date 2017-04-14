@@ -1,88 +1,56 @@
 # Project Title
 
-One Paragraph of project description goes here
+Air Quality REST API
 
-## Getting Started
+## Overview
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This REST API intends to monitor the air quality, namely detecting peaks of carbon monoxide. The API allows to create rules with the environmental parameter to be monitored, the dangerous threshold and a list of users that are notified. 
+The API accepts measurements from sensors with the envrironmental parameter being monitored, the measured value and the timestamp and generates an alert if the measured value exceeds some threshold defined in the rules.
+Finally, it is possible to check, for each user, the alerts registered with the timestamp, the environmental parameter monitored, the measured value and the threshold. 
+
+These API was developed and tested running Ubuntu 16.04.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+* **Python (2.7, 3.2, 3.3, 3.4, 3.5)**
+* **Django 1.8+**
+* **Django REST framework 3.0+**
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+After all Prerequisites have been met there is no need to install anything else.
 
-Say what the step will be
+### Usage
 
-```
-Give the example
-```
-
-And repeat
+After downloading the code, go to the main directory:
 
 ```
-until finished
+cd restapi/airapi
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Then you must run the django server, using the following command:
 
 ```
-Give an example
+python manage.py runserver
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+In order to use the API type `http://localhost:8000/` in your browser. Log in is necessary, but there are some users already registered, such as:
 
 ```
-Give an example
+User: admin
+Password: pass1234
+``` 
+
+If you want to create more users you should run the following command in the main directory:
+
 ```
+python manage.py createsuperuser
+``` 
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+You can create, edit or delete rules but only to create records in order to simulate some sensor readings. The alerts are automatically generated, so it is not possible to take any action on this data besides read.
+To list the alerts by user you should type `http://localhost:8000/alerts/?owners=user_id`
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* **Mário Vieira**
 
